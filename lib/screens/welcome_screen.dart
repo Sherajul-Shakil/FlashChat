@@ -1,3 +1,4 @@
+import 'package:flash_chat/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -70,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               title: 'Sign In',
               colour: Colors.lightBlueAccent,
               onPressed: () {
-                //Navigator.pushNamed(context, LoginScreen.id);
+                Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             RoundedButton(
