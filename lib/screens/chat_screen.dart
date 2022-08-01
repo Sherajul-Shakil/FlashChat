@@ -10,6 +10,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final _auth = FirebaseAuth.instance;
   final messageTextController = TextEditingController();
   late String messageText;
 
@@ -19,7 +20,12 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         leading: null,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.close), onPressed: () {}),
+          IconButton(
+              icon: const Icon(Icons.logout_outlined),
+              onPressed: () {
+                _auth.signOut();
+                Navigator.pop(context);
+              }),
         ],
         title: Text('⚡️Chat'),
         backgroundColor: Colors.lightBlueAccent,
