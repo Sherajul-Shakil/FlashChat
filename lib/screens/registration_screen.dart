@@ -11,7 +11,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  //final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
   late String email;
   late String password;
@@ -66,7 +66,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               title: 'Sign Up',
               colour: Colors.blueAccent,
               onPressed: () async {
-                Navigator.pushNamed(context, ChatScreen.id);
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                      email: email, password: password);
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                } catch (e) {
+                  print(e);
+                }
               },
             ),
           ],
