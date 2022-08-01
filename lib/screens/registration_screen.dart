@@ -1,8 +1,8 @@
 import 'package:flash_chat/constants.dart';
+import 'package:flash_chat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/components/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -21,7 +21,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -65,7 +65,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             RoundedButton(
               title: 'Sign Up',
               colour: Colors.blueAccent,
-              onPressed: () async {},
+              onPressed: () async {
+                Navigator.pushNamed(context, ChatScreen.id);
+              },
             ),
           ],
         ),
